@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+    use App\Http\Requests\StoreChatRequest;
 
-class ChatGptStoreController extends Controller
-{
-    /**
-     * Handle the incoming request.
-     */
-    public function __invoke(Request $request)
+    class ChatGptStoreController extends Controller
     {
-        //
+        /**
+         * Handle the incoming request.
+         */
+        public function __invoke(StoreChatRequest $request)
+        {
+            $messages = [];
+            $messages[] = ['role' => 'user', 'content' => $request->input('prompt')];
+            dd($messages);
+        }
     }
-}

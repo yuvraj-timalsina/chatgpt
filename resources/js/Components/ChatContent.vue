@@ -24,7 +24,7 @@ const props = defineProps({
 
 
     </span>
-        <section class="w-4/6 text-left pl-4">
+        <section class="w-4/6 text-left pl-4 pt-2">
             {{ content?.content }}
         </section>
     </div>

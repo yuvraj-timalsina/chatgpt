@@ -3,6 +3,7 @@ import ChatLayout from "@/Layouts/ChatLayout.vue"
 import {Link, useForm} from "@inertiajs/vue3"
 import ChatContent from "@/Components/ChatContent.vue";
 import {onMounted, ref} from "vue";
+import Skeleton from "@/Components/Skeleton.vue";
 
 const promptInput = ref(null)
 const chatContainer = ref(null)
@@ -68,6 +69,7 @@ onMounted(() => {
                         <template v-for="(content, index) in chat?.context" :key="index">
                             <ChatContent :content="content"/>
                         </template>
+                        <Skeleton v-show="form.processing"/>
                     </div>
                 </div>
             </template>

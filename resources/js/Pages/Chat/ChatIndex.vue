@@ -74,11 +74,13 @@ const title = computed(() => props.chat?.context[0].content ?? 'New Chat')
                                 </svg>
                             </button>
                             <span v-if="showDeleteButton" class="flex justify-between">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
-                                     xmlns="http://www.w3.org/2000/svg">
+                                <Link :href="route('chat.destroy', chat?.id)" method="DELETE" as="button" class="text-red-300 hover:text-red-500">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                                         xmlns="http://www.w3.org/2000/svg">
                                  <path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
-                               <button @click="showDeleteButton = false">
+                                </Link>
+                               <button @click="showDeleteButton = false" class="text-slate-300 hover:text-slate-500">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
                                          xmlns="http://www.w3.org/2000/svg">
                                     <path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/>

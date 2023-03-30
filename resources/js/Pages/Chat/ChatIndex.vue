@@ -1,6 +1,7 @@
 <script setup>
 import ChatLayout from "@/Layouts/ChatLayout.vue"
 import {Link, useForm} from "@inertiajs/vue3"
+import ChatContent from "@/Components/ChatContent.vue";
 
 const props = defineProps({
     messages: Array,
@@ -29,7 +30,15 @@ const submit = () => {
             </ul>
         </template>
         <div class="w-full flex text-white">
-
+            <template v-if="chat">
+                <div class="w-full flex h-screen bg-slate-900">
+                    <div class="w-full overflow-auto">
+                        <template v-for="(content, index) in chat?.context" :key="index">
+                            <ChatContent :content="content"/>
+                        </template>
+                    </div>
+                </div>
+            </template>
         </div>
         <template #form>
             <section class="px-6 top-0">

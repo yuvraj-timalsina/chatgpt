@@ -31,7 +31,7 @@ Add OPENAI_API_KEY in .env
 OPENAI_API_KEY=sk-...
 ```
 
-# Create and Configure the Database
+# Create and configure the Database
 
 ```bash
 sudo mysql -u <username> -p

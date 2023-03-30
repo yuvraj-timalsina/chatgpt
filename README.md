@@ -8,7 +8,7 @@
 Clone the project using SSH or HTTPS.
 
 ```bash
-  git@github.com:yuvraj-timalsina/chatgpt.git
+git@github.com:yuvraj-timalsina/chatgpt.git
 ```
     
 ## Run Locally
@@ -16,59 +16,59 @@ Clone the project using SSH or HTTPS.
 Go to the Project Directory
 
 ```bash
-  cd chatgpt
+cd chatgpt
 ```
 
 Create .env in root directory
 
 ```bash
-  cp .env.example .env
+cp .env.example .env
 ```
 
 Add OPENAI_API_KEY in .env
 
 ```bash
-  OPENAI_API_KEY=sk-...
+OPENAI_API_KEY=sk-...
 ```
 
-Create and Configure the Database
+# Create and Configure the Database
 
 ```bash
-  sudo mysql -u <username> -p
-  create database chatgpt;
+sudo mysql -u <username> -p
+create database chatgpt;
 ```
 Add Database Credentials in .env
 
 ```bash
-  DB_DATABASE=chatgpt
-  DB_USERNAME=<username>
-  DB_PASSWORD=<password>
+DB_DATABASE=chatgpt
+DB_USERNAME=<username>
+DB_PASSWORD=<password>
 ```
 
-Install Dependencies
+# Install Dependencies
 
 ```bash
-  composer install
+composer install
 ```
 
 Generate Application Key
 
 ```bash
-  php artisan key:generate
+php artisan key:generate
 ```
 
 Run the Database Migrations
 
 ```bash
-  php artisan migrate
+php artisan migrate
 ```
 
-Run the Server
+# Run the Server
 
 ```bash
-  php artisan serve
+php artisan serve
   
-  http://127.0.0.1:8000
+http://127.0.0.1:8000
 ```
 
 ## Author

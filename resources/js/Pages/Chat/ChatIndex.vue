@@ -2,9 +2,9 @@
 import ChatLayout from "@/Layouts/ChatLayout.vue"
 import {Link, useForm} from "@inertiajs/vue3"
 import ChatContent from "@/Components/ChatContent.vue";
-import {onMounted, ref} from "vue";
+import {computed, onMounted, ref} from "vue";
 import Skeleton from "@/Components/Skeleton.vue";
-
+import {Head} from "@inertiajs/vue3";
 const promptInput = ref(null)
 const chatContainer = ref(null)
 
@@ -39,9 +39,11 @@ const clear = () => {
 onMounted(() => {
     clear()
 })
+const title = computed(()=>props.chat?.context[0].content ?? 'New Chat')
 </script>
 
 <template>
+    <Head :title="title"/>
     <ChatLayout>
         <template #aside>
             <ul class="p-2">
@@ -54,7 +56,7 @@ onMounted(() => {
                     </svg>
                 </li>
                 <template v-for="message in messages" :key="message.id">
-                    <li class="px-4 py-2 my-2 flex justify-between font-semibold text-slate-400 bg-slate-900 hover:bg-slate-700 rounded-lg duration-200">
+                    <li :class="[message.id===chat?.id ? 'bg-slate-700' : 'bg-slate-900', 'px-4 py-2 my-2 flex justify-between font-semibold text-slate-400 hover:bg-slate-700 rounded-lg duration-200']">
                         <Link :href="`/chat/${message.id}`">
                             {{ message.context[0].content }}
                         </Link>

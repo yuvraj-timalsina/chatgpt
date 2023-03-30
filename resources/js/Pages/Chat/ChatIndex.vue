@@ -1,6 +1,6 @@
 <script setup>
 import ChatLayout from "@/Layouts/ChatLayout.vue"
-import {useForm} from "@inertiajs/vue3"
+import {Link, useForm} from "@inertiajs/vue3"
 
 const props = defineProps({
     messages: Array,
@@ -18,6 +18,15 @@ const submit = () => {
 <template>
     <ChatLayout>
         <template #aside>
+            <ul class="p-2">
+                <template v-for="message in messages" :key="message.id">
+                    <li class="px-4 py-2 my-2 flex justify-between font-semibold text-slate-400 bg-slate-900 hover:bg-slate-700 rounded-lg duration-200">
+                        <Link :href="`/chat/${message.id}`">
+                            {{ message.context[0].content }}
+                        </Link>
+                    </li>
+                </template>
+            </ul>
         </template>
         <div class="w-full flex text-white">
 
@@ -26,9 +35,10 @@ const submit = () => {
             <section class="px-6 top-0">
                 <div class="w-full">
                     <div class="relative flex-1 flex items-center">
-                        <input v-model="form.prompt" @keyup.enter="submit" class="w-full bg-slate-700 text-white rounded-lg"
+                        <input v-model="form.prompt" class="w-full bg-slate-700 text-white rounded-lg"
                                placeholder="Ask Laravel AI"
-                               type="text">
+                               type="text"
+                               @keyup.enter="submit">
                         <div class="absolute inset-y-0 right-0 flex items-center pl-3">
                             <svg class="w-6 h-6 -ml-8 text-slate-200" fill="none" stroke="currentColor"
                                  stroke-width="1.5"

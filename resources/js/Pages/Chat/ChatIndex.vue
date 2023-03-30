@@ -44,12 +44,14 @@ const submit = () => {
             <section class="px-6 top-0">
                 <div class="w-full">
                     <div class="relative flex-1 flex items-center">
-                        <input v-model="form.prompt" class="w-full bg-slate-700 text-white rounded-lg"
+                        <input v-model="form.prompt" :disabled="form.processing"
+                               class="w-full bg-slate-700 text-white rounded-lg"
                                placeholder="Ask Laravel AI"
                                type="text"
-                               @keyup.enter="submit">
+                               @keyup.enter="submit"
+                        >
                         <div class="absolute inset-y-0 right-0 flex items-center pl-3">
-                            <svg class="w-6 h-6 -ml-8 text-slate-200" fill="none" stroke="currentColor"
+                            <svg v-if="!form.processing" class="w-6 h-6 -ml-8 text-slate-200" fill="none" stroke="currentColor"
                                  stroke-width="1.5"
                                  viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -57,6 +59,7 @@ const submit = () => {
                                     stroke-linecap="round"
                                     stroke-linejoin="round"/>
                             </svg>
+                            <div class="dot-typing -ml-10" v-if="form.processing"></div>
                         </div>
                     </div>
                 </div>
@@ -64,3 +67,48 @@ const submit = () => {
         </template>
     </ChatLayout>
 </template>
+<style>
+.dot-typing {
+    position: relative;
+    left: -9999px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #9880ff;
+    color: #9880ff;
+    box-shadow: 9984px 0 0 0 #9880ff, 9999px 0 0 0 #9880ff,
+    10014px 0 0 0 #9880ff;
+    animation: dot-typing 1.5s infinite linear;
+}
+
+@keyframes dot-typing {
+    0% {
+        box-shadow: 9984px 0 0 0 #9880ff, 9999px 0 0 0 #9880ff,
+        10014px 0 0 0 #9880ff;
+    }
+    16.667% {
+        box-shadow: 9984px -10px 0 0 #9880ff, 9999px 0 0 0 #9880ff,
+        10014px 0 0 0 #9880ff;
+    }
+    33.333% {
+        box-shadow: 9984px 0 0 0 #9880ff, 9999px 0 0 0 #9880ff,
+        10014px 0 0 0 #9880ff;
+    }
+    50% {
+        box-shadow: 9984px 0 0 0 #9880ff, 9999px -10px 0 0 #9880ff,
+        10014px 0 0 0 #9880ff;
+    }
+    66.667% {
+        box-shadow: 9984px 0 0 0 #9880ff, 9999px 0 0 0 #9880ff,
+        10014px 0 0 0 #9880ff;
+    }
+    83.333% {
+        box-shadow: 9984px 0 0 0 #9880ff, 9999px 0 0 0 #9880ff,
+        10014px -10px 0 0 #9880ff;
+    }
+    100% {
+        box-shadow: 9984px 0 0 0 #9880ff, 9999px 0 0 0 #9880ff,
+        10014px 0 0 0 #9880ff;
+    }
+}
+</style>

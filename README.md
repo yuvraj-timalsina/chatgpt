@@ -1,7 +1,7 @@
 
 # ChatGPT Clone
 
- Laravel & AlpineJs ChatGPT Clone.
+ Laravel & InertiaJs ChatGPT Clone.
 
 ## Installation
 
